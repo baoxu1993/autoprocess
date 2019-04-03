@@ -1,0 +1,25 @@
+{
+    "name": "autoprocess/autoprocess",
+    "description": "Yii2 Framework Data Processing",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "包旭",
+            "email": "itbaoxu@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "composer-plugin-api": "^1.0"
+    },
+    "require-dev": {
+        "composer/composer": "^1.0",
+    },
+	"autoload": {
+        "psr-4": {
+            "Autoprocess\\": "src/"
+        }
+    }
+}
