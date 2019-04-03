@@ -17,6 +17,7 @@ use yii\base\ModelEvent;
 use yii\base\NotSupportedException;
 use yii\base\UnknownMethodException;
 use yii\helpers\ArrayHelper;
+use yii\db\ActiveRecordInterface;
 
 /**
  * ActiveRecord is the base class for classes representing relational data in terms of objects.
@@ -1754,7 +1755,24 @@ abstract class BaseActiveRecord extends Model implements ActiveRecordInterface
     }
 
 
-    public function test(){
-        echo 222222222;
+    /**
+     *setAttributeTransformation
+     * @param $oldname
+     * @param $name
+     * @param $value
+     */
+    public function setAttributeTransformation($oldname, $name, $value)
+    {
+        if ($this->hasAttribute($oldname)) {
+            if (
+                !empty($this->_relationsDependencies[$name])
+                && (!array_key_exists($name, $this->_attributes) || $this->_attributes[$name] !== $value)
+            ) {
+                $this->resetDependentRelations($name);
+            }
+            $this->_attributes[$name] = $value;
+        } else {
+            throw new InvalidArgumentException(get_class($this) . ' has no attribute named "' . $name . '".');
+        }
     }
 }
