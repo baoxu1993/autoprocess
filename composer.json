@@ -1,7 +1,7 @@
 {
     "name": "autoprocess/autoprocess",
     "description": "Yii2 Framework Data Processing",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
